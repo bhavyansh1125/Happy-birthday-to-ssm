@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Letter 💌</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f7e9df;
+    overflow: hidden;
+    color: #3d2925;
+}
+
+.slider {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.7s ease;
+    pointer-events: none;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.content {
+    max-width: 700px;
+    width: 100%;
+}
+
+h1 {
+    font-size: clamp(38px, 8vw, 75px);
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: clamp(28px, 6vw, 50px);
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 19px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.emoji {
+    font-size: 70px;
+    margin-bottom: 20px;
+}
+
+button {
+    border: none;
+    padding: 13px 28px;
+    border-radius: 30px;
+    background: #6d4035;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 8px;
+    transition: 0.25s;
+}
+
+button:hover {
+    transform: scale(1.06);
+}
+
+.prev {
+    background: transparent;
+    color: #6d4035;
+    border: 1px solid #6d4035;
+}
+
+.dots {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    background: #c7a69b;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.dot.active {
+    transform: scale(1.5);
+    background: #6d4035;
+}
+
+/* Different slide backgrounds */
+
+.slide:nth-child(1) {
+    background: linear-gradient(135deg, #f8e6dc, #ead0c4);
+}
+
+.slide:nth-child(2) {
+    background: #f5eee8;
+}
+
+.slide:nth-child(3) {
+    background: #eadbd4;
+}
+
+.slide:nth-child(4) {
+    background: #f8eee9;
+}
+
+.slide:nth-child(5) {
+    background: #e9d4ca;
+}
+
+.slide:nth-child(6) {
+    background: #f6e8e0;
+}
+
+.slide:nth-child(7) {
+    background: #dfc8be;
+}
+
+/* Letter */
+
+.letter {
+    background: #fffaf5;
+    padding: 35px;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0 15px 40px rgba(80, 50, 40, 0.15);
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+.letter h2 {
+    text-align: center;
+}
+
+.signature {
+    margin-top: 25px;
+    text-align: right;
+    font-style: italic;
+}
+
+@media(max-width:600px) {
+    p {
+        font-size: 16px;
+    }
+
+    .letter {
+        padding: 23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="slider">
+
+    <!-- Slide 1 -->
+    <section class="slide active">
+        <div class="content">
+            <div class="emoji">💌</div>
+            <h1>Hey You...</h1>
+            <p>
+                There's something I've been wanting to say.
+                So instead of sending a normal message,
+                I made this little website.
+            </p>
+            <button onclick="nextSlide()">Open it →</button>
+        </div>
+    </section>
+
+    <!-- Slide 2 -->
+    <section class="slide">
+        <div class="content">
+            <div class="emoji">🌸</div>
+            <h2>A Small Beginning</h2>
+            <p>
+                Sometimes people enter our lives without us
+                realizing how special their presence will become.
+            </p>
+            <button class="prev" onclick="prevSlide()">← Back</button>
+            <button onclick="nextSlide()">Continue →</button>
+        </div>
+    </section>
+
+    <!-- Slide 3 -->
+    <section class="slide">
+        <div class="content">
+            <div class="emoji">✨</div>
+            <h2>Some Moments</h2>
+            <p>
+                The random conversations, stupid jokes,
+                little memories and completely ordinary days...
+                somehow become the moments we remember most.
+            </p>
+            <button class="prev" onclick="prevSlide()">← Back</button>
+            <button onclick="nextSlide()">Next →</button>
+        </div>
+    </section>
+
+    <!-- Slide 4 -->
+    <section class="slide">
+        <div class="content">
+            <div class="emoji">🫶</div>
+            <h2>Thank You</h2>
+            <p>
+                Thank you for being yourself.
+                Thank you for the laughs, the conversations,
+                and all those little things that made ordinary
+                moments feel a little better.
+            </p>
+            <button class="prev" onclick="prevSlide()">← Back</button>
+            <button onclick="nextSlide()">Next →</button>
+        </div>
+    </section>
+
+    <!-- Slide 5 -->
+    <section class="slide">
+        <div class="content">
+            <div class="emoji">🌙</div>
+            <h2>No Big Words</h2>
+            <p>
+                I don't want to make this unnecessarily dramatic.
+                Some feelings are better kept simple and honest.
+            </p>
+            <button class="prev" onclick="prevSlide()">← Back</button>
+            <button onclick="nextSlide()">One Last Thing →</button>
+        </div>
+    </section>
+
+    <!-- Slide 6 -->
+    <section class="slide">
+        <div class="content">
+            <div class="emoji">📜</div>
+            <h2>So...</h2>
+            <p>
+                I wrote something for you.
+                Take your time reading it.
+            </p>
+            <button class="prev" onclick="prevSlide()">← Back</button>
+            <button onclick="nextSlide()">Read the Letter 💌</button>
+        </div>
+    </section>
+
+    <!-- Slide 7 : Letter -->
+    <section class="slide">
+        <div class="content">
+            <div class="letter">
+                <h2>Dear You,</h2>
+
+                <p>
+                    I don't really know the perfect way to write this,
+                    so I'll just say it honestly.
+                </p>
+
+                <p>
+                    You've become someone whose presence matters to me.
+                    Maybe I don't always say it, and maybe I don't
+                    always know how to express it, but I genuinely
+                    appreciate having you in my life.
+                </p>
+
+                <p>
+                    There are people we meet and eventually forget,
+                    and then there are people who leave behind little
+                    memories that stay with us.
+                </p>
+
+                <p>
+                    You're one of those people.
+                </p>
+
+                <p>
+                    I hope life gives you plenty of reasons to smile,
+                    plenty of moments worth remembering, and people
+                    who appreciate you for exactly who you are.
+                </p>
+
+                <p>
+                    And whatever happens in the future,
+                    I hope you remember that someone out there
+                    is genuinely wishing the best for you.
+                </p>
+
+                <p class="signature">
+                    With a lot of good wishes,<br>
+                    Someone who cares 🌷
+                </p>
+
+                <div style="text-align:center;">
+                    <button onclick="restart()">↻ Read Again</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- Navigation dots -->
+<div class="dots" id="dots"></div>
+
+<script>
+
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+const dotsContainer = document.getElementById("dots");
+
+slides.forEach((_, index) => {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+
+    if(index === 0) {
+        dot.classList.add("active");
+    }
+
+    dot.onclick = () => goToSlide(index);
+
+    dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll(".dot");
+
+function updateSlide() {
+
+    slides.forEach((slide, index) => {
+        slide.classList.remove("active");
+
+        if(index === currentSlide) {
+            slide.classList.add("active");
+        }
+    });
+
+    dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentSlide);
+    });
+}
+
+function nextSlide() {
+    if(currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide();
+    }
+}
+
+function prevSlide() {
+    if(currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+    }
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    updateSlide();
+}
+
+function restart() {
+    currentSlide = 0;
+    updateSlide();
+}
+
+/* Keyboard navigation */
+
+document.addEventListener("keydown", function(e) {
+
+    if(e.key === "ArrowRight") {
+        nextSlide();
+    }
+
+    if(e.key === "ArrowLeft") {
+        prevSlide();
+    }
+
+});
+
+/* Swipe support for mobile */
+
+let touchStartX = 0;
+
+document.addEventListener("touchstart", function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener("touchend", function(e) {
+
+    let touchEndX = e.changedTouches[0].screenX;
+
+    if(touchEndX < touchStartX - 50) {
+        nextSlide();
+    }
+
+    if(touchEndX > touchStartX + 50) {
+        prevSlide();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
